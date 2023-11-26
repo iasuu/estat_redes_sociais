@@ -43,19 +43,14 @@ simulacao_erdos_renyi <- function(vert_n, p = 0.5) {
   E(grafo)$color <- cores_arestas
 
   return(list(
-    M_matriz = matriz,
+    M_matriz = matriz + t(matriz),
+    grau_vertices = colSums(matriz + t(matriz)) %>% data.frame() %>% `colnames<-`(c('Grau')),
     G_grafo = grafo
   ))
   
 }
 
 simulacao <- simulacao_erdos_renyi(vert_n = 10, p = 0.3)
-cat('Matriz da simulação do Grafo Erdos-Renyi \n', '--------------------')
-print.data.frame(simulacao$M_matriz)
-
-grau_arestas <- (simulacao$M_matriz %>% colSums()) + (simulacao$M_matriz %>% t() %>% colSums())
-
-grau_total <- sum(teste+teste2)
 
 # plota o grafico
 plot(simulacao$G_grafo, layout=layout_in_circle)
