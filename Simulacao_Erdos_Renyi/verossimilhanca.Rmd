@@ -1,0 +1,52 @@
+---
+title: "Verossimilhanca de um G(N, p)"
+author: "Guilherme Yukio Iasunaga"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r}
+matriz <- data.frame(
+  `1` = c(0, 0, 1, 0, 1),
+  `2` = c(0, 0, 1, 1, 0),
+  `3` = c(1, 1, 0, 1, 1),
+  `4` = c(0, 1, 1, 0, 1),
+  `5` = c(1, 0, 1, 1, 0)
+)
+```
+
+Vamos considerar p como a probabilidade de ter uma aresta entre v e v', assim $P(M(v, v') = 1) = p$ e $P(M(v, v') = 0) = 1-p$. Com isso, a probabilidade de conseguir uma matriz igual a construida acima é:
+
+$$
+\begin{aligned}
+&P(M(1, 2) = 0,  M(1, 3) = 1, ..., M(3, 4) = 1, M(4, 5) = 1) \\
+= & P(M(1, 2) = 0) \cdot P(M(1, 3) = 1) \cdots P(M(3, 4) = 1) \cdot P(M(4, 5) = 1) \\
+= & p^{7} (1-p)^{3}
+\end{aligned}
+$$
+
+Com isso, temos que a função de verossimilhança é $p^{7}(1-p)^{3}$. 
+
+Tirando o log da função, temos:
+
+$$
+g(p) = log(p^{7}(1-p)^{3}) = log(p^{7}) + log((1-p)^{3}) = 7log(p) + 3log(1-p)
+$$
+
+Tirando a derivada e igualando a zero para encontrar o ponto de invariância:
+
+$$
+\begin{aligned}
+\frac{\partial g(p)}{\partial p} = \frac{\partial}{\partial p} (7log(p) + 3log(1-p))
+\end{aligned}
+$$
+
+
+
+
+
+
+
+
+
+
