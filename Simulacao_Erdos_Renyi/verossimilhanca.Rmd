@@ -37,10 +37,16 @@ Tirando a derivada e igualando a zero para encontrar o ponto de invariância:
 
 $$
 \begin{aligned}
-\frac{\partial g(p)}{\partial p} = \frac{\partial}{\partial p} (7log(p) + 3log(1-p))
+\frac{\partial g(p)}{\partial p} &= \frac{\partial}{\partial p} (7log(p) + 3log(1-p)) \\
+                                 &= 7\frac{1}{p} + 3\left(\frac{-1}{1-p}\right) \\
+                                 &= \frac{7}{p} - \frac{3}{1-p} = 0\\
+                                 &\Leftrightarrow \frac{7}{p} = \frac{3}{1-p} \\
+                                 &\Leftrightarrow 10 p = 7 \\
+                                 &\Leftrightarrow p = 0.7
 \end{aligned}
 $$
 
+Pela aula, sabemos que o p encontrado acima é ponto de máximo por conta da segunda ferivada ser menor que zero. Com isso, $\hat{p}_N = 0.7$.
 
 
 
