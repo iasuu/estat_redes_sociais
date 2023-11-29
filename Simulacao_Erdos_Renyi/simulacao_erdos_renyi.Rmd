@@ -5,9 +5,7 @@ date: "`r Sys.Date()`"
 output: pdf_document
 ---
 
-```{r}
-###################### SIMULACAO GRAFO DE ERDOS-RENYI #########################
-
+```{r, warning=FALSE, message=FALSE}
 library(dplyr)
 library(igraph)
 
@@ -49,8 +47,10 @@ simulacao_erdos_renyi <- function(vert_n, lambda) {
   grafo <- graph(edges=vetor_pares, n=vert_n, directed=FALSE)
   
   # Atribuindo cores às arestas
-  cores_arestas <- rainbow(vert_n)
-  E(grafo)$color <- cores_arestas
+  E(grafo)$color <- rainbow(vert_n)
+  
+  cat(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", 
+             (colSums(matriz + t(matriz)) %>% data.frame() %>% sum())/2))
   
   return(list(
     M_matriz = matriz + t(matriz),
@@ -67,7 +67,6 @@ simulacao1 <- simulacao_erdos_renyi(vert_n = 100, lambda = 0.1)
 
 # plota o grafico
 plot(simulacao1$G_grafo, layout=layout_in_circle)
-print(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", (simulacao1$grau_vertices %>% sum())/2))
 ```
 
 ```{r, warning=FALSE}
@@ -75,7 +74,6 @@ simulacao2 <- simulacao_erdos_renyi(vert_n = 100, lambda = 0.7)
 
 # plota o grafico
 plot(simulacao2$G_grafo, layout=layout_in_circle)
-print(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", (simulacao2$grau_vertices %>% sum())/2))
 ```
 
 ```{r, warning=FALSE}
@@ -83,15 +81,13 @@ simulacao3 <- simulacao_erdos_renyi(vert_n = 100, lambda = 1.5)
 
 # plota o grafico
 plot(simulacao3$G_grafo, layout=layout_in_circle)
-print(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", (simulacao3$grau_vertices %>% sum())/2))
 ```
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="300%"}
 simulacao4 <- simulacao_erdos_renyi(vert_n = 100, lambda = 2.5)
 
 # plota o grafico
 plot(simulacao4$G_grafo, layout=layout_in_circle)
-print(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", (simulacao4$grau_vertices %>% sum())/2))
 ```
 
 Pelos grafos representados graficamente, podemos observar que a medida que o valor de $\lambda$ aumenta, o número de arestas no grafo também aumenta. 
