@@ -49,7 +49,7 @@ simulacao_erdos_renyi <- function(vert_n, lambda) {
   # Atribuindo cores às arestas
   E(grafo)$color <- rainbow(vert_n)
   
-  cat(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = 2.5: ", 
+  cat(paste0("Número de arestas presentes na simulação com N = 100 e Lambda = ", lambda, ": ", 
              (colSums(matriz + t(matriz)) %>% data.frame() %>% sum())/2))
   
   return(list(
@@ -90,7 +90,7 @@ simulacao4 <- simulacao_erdos_renyi(vert_n = 100, lambda = 2.5)
 plot(simulacao4$G_grafo, layout=layout_in_circle)
 ```
 
-Pelos grafos representados graficamente, podemos observar que a medida que o valor de $\lambda$ aumenta, o número de arestas no grafo também aumenta. 
+Pelos grafos representados graficamente, podemos observar que a medida que o valor de $\lambda$ aumenta, o número de arestas no grafo também aumenta, por conta da definição de p depender proporcionalmente a $\lambda$.
 
 OBS: Devido ao número de vértices, algumas arestas ficam ocultas graficamente. 
 
